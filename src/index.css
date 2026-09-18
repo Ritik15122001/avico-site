@@ -1,0 +1,197 @@
+@import 'tailwindcss';
+
+/* ============ design tokens ============ */
+:root {
+  --f-d: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --f-b: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+  --f-m: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --blur: 26px;
+  --blur-sm: 14px;
+
+    --bg: #fbf6f0; --bg2: #f5ece1; --el: #ffffff; --deep: #f0e6d9;
+  --tx: #3a2b20; --mut: #786557; --mut2: #9e8b79;
+  --pri: #a8450a; --pri2: #bc5009; --acc: #8f3a05; --acc2: #e8801f;
+  --onAcc: #ffffff; --soft: #8a3d05;
+  --tint: #3a2b20; --hi: #ffffff; --lineSolid: #967658; --sh: #78583a;
+  --hi-line: rgb(255 255 255 / 0.95);
+  --blob1: #ffd2ac; --blob2: #ffe8cf; --blob3: #ffbe92; --heroGlow: #ffeedd;
+  --plateA: #ffffff; --plateB: #f2e9de; --plateInk: #8a7462;
+  --missA: #f6f0e8; --missB: #eee4d7;
+  --glass1: rgb(255 255 255 / 0.88); --glass2: rgb(255 255 255 / 0.64); --glass3: rgb(255 255 255 / 0.78);
+  --glassSoft: rgb(255 255 255 / 0.7); --glassTint: rgb(58 43 32 / 0.012); --texA: 0.07;
+  --line: rgb(150 118 88 / 0.26); --line2: rgb(150 118 88 / 0.44);
+
+  /* Footer sits on its own dark surface: the ambient wash bleeds through a
+     transparent footer and drags text contrast below AA. */
+  --footer-bg: #17110c;
+  --footer-ink: #f6f1ea;
+}
+
+
+
+
+
+/* ---- OBSIDIAN (dark) ---- */
+
+/* ============ tailwind theme mapping ============ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-surface: var(--el);
+  --color-deep: var(--deep);
+  --color-ink: var(--tx);
+  --color-muted: var(--mut);
+  --color-muted2: var(--mut2);
+  --color-primary: var(--pri);
+  --color-primary2: var(--pri2);
+  --color-accent: var(--acc);
+  --color-accent2: var(--acc2);
+  --color-on-accent: var(--onAcc);
+  --color-soft: var(--soft);
+  --color-line: var(--line);
+  --color-line2: var(--line2);
+
+  --font-display: var(--f-d);
+  --font-sans: var(--f-b);
+  --font-mono: var(--f-m);
+
+  --radius-glass: 18px;
+  --radius-plate: 12px;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--tx);
+    font-family: var(--f-b);
+    font-size: 16px;
+    line-height: 1.58;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3, h4 { margin: 0; line-height: 1.1; text-wrap: balance; }
+  h1, h2, h3 { font-family: var(--f-d); font-weight: 700; letter-spacing: -0.028em; }
+  :focus-visible { outline: 2px solid var(--pri2); outline-offset: 3px; border-radius: 6px; }
+  ::selection { background: color-mix(in srgb, var(--pri) 24%, transparent); }
+  input, textarea, select { font-family: var(--f-b); }
+  @media (max-width: 760px) { input, textarea, select { font-size: 16px; } }
+}
+
+/* ============ glass ============ */
+@utility glass {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius-glass);
+  background-image:
+    linear-gradient(155deg, var(--glass1), var(--glass2) 54%, var(--glass3)),
+    repeating-linear-gradient(122deg, var(--glassTint) 0 2px, transparent 2px 5px);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(var(--blur)) saturate(175%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(175%);
+  box-shadow:
+    inset 0 1.5px 0 var(--hi-line),
+    inset 0 -22px 40px -28px color-mix(in srgb, var(--sh) 16%, transparent),
+    0 24px 56px -34px color-mix(in srgb, var(--sh) 22%, transparent);
+}
+
+@utility glass-hover {
+  transition: transform 0.34s cubic-bezier(0.2, 0.9, 0.25, 1), border-color 0.3s, box-shadow 0.34s;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--pri2) 50%, transparent);
+    box-shadow:
+      inset 0 1.5px 0 var(--hi-line),
+      0 30px 60px -32px color-mix(in srgb, var(--sh) 24%, transparent),
+      0 14px 40px -22px color-mix(in srgb, var(--pri2) 45%, transparent);
+  }
+}
+
+/* ============ ambient background ============ */
+.ambient { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.ambient .tex {
+  position: absolute; inset: 0; background-size: 640px;
+  opacity: var(--texA); mix-blend-mode: overlay;
+}
+.ambient span { position: absolute; display: block; border-radius: 50%; filter: blur(120px); }
+.ambient .b1 { width: 58vw; height: 58vw; left: -18vw; top: -12vw; background: var(--blob1); opacity: 0.5; animation: drift1 32s ease-in-out infinite; }
+.ambient .b2 { width: 44vw; height: 44vw; right: -12vw; top: 28vh; background: var(--acc); opacity: 0.38; animation: drift2 40s ease-in-out infinite; }
+.ambient .b3 { width: 52vw; height: 52vw; left: 30vw; bottom: -24vw; background: var(--blob3); opacity: 0.4; animation: drift1 48s ease-in-out infinite reverse; }
+@keyframes drift1 { 50% { transform: translate(8vw, 6vh) scale(1.14); } }
+@keyframes drift2 { 50% { transform: translate(-7vw, -8vh) scale(0.88); } }
+
+.vignette {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(120% 80% at 50% 0, transparent 46%, color-mix(in srgb, var(--sh) 7%, transparent) 100%);
+}
+
+/* ============ marquee ============ */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 34s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ============ hero ============ */
+@keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12); } }
+.kenburns { animation: kenburns 12s ease-out both; }
+
+@keyframes pulse-dot { 50% { opacity: 0.35; } }
+.pulse-dot { animation: pulse-dot 2.4s ease-in-out infinite; }
+
+@keyframes fill-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.fill-bar { transform-origin: left; animation: fill-bar 7s linear both; }
+
+@keyframes scroll-cue {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(13px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+.scroll-cue { animation: scroll-cue 1.9s ease-in-out infinite; }
+
+/* hide scrollbar on the hero thumb rail */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+
+/* ============ accent shadows ============
+   Kept as named utilities: Tailwind cannot parse arbitrary shadow values
+   that nest color-mix()/rgb() inside the bracket syntax. */
+@utility glow-accent {
+  box-shadow:
+    0 16px 34px -16px color-mix(in srgb, var(--pri) 80%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 0.35);
+}
+@utility glow-accent-lg {
+  box-shadow: 0 20px 40px -16px color-mix(in srgb, var(--pri) 90%, transparent);
+}
+@utility glow-accent-sm {
+  box-shadow: 0 8px 20px -10px color-mix(in srgb, var(--pri) 70%, transparent);
+}
+@utility glow-accent-thumb {
+  box-shadow: 0 14px 34px -18px color-mix(in srgb, var(--pri) 60%, transparent);
+}
+@utility glow-accent-bar {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--pri) 70%, transparent);
+}
+@utility glow-accent-dot {
+  box-shadow: 0 0 10px var(--acc);
+}
+@utility glow-accent-mark {
+  filter: drop-shadow(0 8px 18px color-mix(in srgb, var(--pri) 50%, transparent));
+}
