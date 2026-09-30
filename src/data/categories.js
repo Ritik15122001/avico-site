@@ -1,4 +1,6 @@
-export const categories = [
+import { avicoModels } from './avicoModels.js';
+
+const baseCategories = [
   {
     "id": "floor-care",
     "name": "Floor Care",
@@ -767,5 +769,32 @@ export const categories = [
     ]
   }
 ];
+
+/** URL-safe id for a model code: "AVSD 55L" -> "avsd-55l". */
+export const modelSlug = (code = '') =>
+  code.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/**
+ * Slots the AVICO models into their range/group (creating the group when it
+ * does not exist yet) and recomputes each range's model count.
+ */
+function mergeModels(ranges, extra) {
+  const inserted = new Map(); // keep AVICO models first, in sheet order
+  const out = ranges.map((c) => ({ ...c, groups: c.groups.map((g) => ({ ...g, models: [...g.models] })) }));
+  for (const { range, group, ...model } of extra) {
+    const cat = out.find((c) => c.id === range);
+    if (!cat) continue;
+    let g = cat.groups.find((x) => x.title === group);
+    if (!g) cat.groups.push((g = { title: group, models: [] }));
+    if (g.models.some((m) => m.code === model.code)) continue;
+    const at = inserted.get(g) || 0;
+    g.models.splice(at, 0, model);
+    inserted.set(g, at + 1);
+  }
+  for (const c of out) c.count = c.groups.reduce((n, g) => n + g.models.length, 0);
+  return out;
+}
+
+export const categories = mergeModels(baseCategories, avicoModels);
 
 export const totalModels = categories.reduce((n, c) => n + c.count, 0);

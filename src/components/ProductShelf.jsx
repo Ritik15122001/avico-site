@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronRight, Plus } from 'lucide-react';
+import { modelSlug } from '../data/categories';
 import { GlassCard } from './GlassCard';
 import { Plate } from './Media';
 import { cx } from '../lib/cx';
@@ -66,17 +68,23 @@ export function ProductShelf({ category, open, onToggle }) {
                   </h4>
                   <ul className="flex flex-col gap-1.5">
                     {group.models.map((m) => (
-                      <li
-                        key={m.code}
-                        className="flex items-center gap-2.5 rounded-[10px] border border-[color-mix(in_srgb,var(--tint)_6%,transparent)] bg-[color-mix(in_srgb,var(--tint)_4.5%,transparent)] px-3 py-2 transition hover:border-line2 hover:bg-[color-mix(in_srgb,var(--tint)_9%,transparent)]"
-                      >
+                      <li key={m.code}>
+                        <Link
+                          to={`/products/${category.id}/${modelSlug(m.code)}`}
+                          className="group/row flex items-center gap-2.5 rounded-[10px] border border-[color-mix(in_srgb,var(--tint)_6%,transparent)] bg-[color-mix(in_srgb,var(--tint)_4.5%,transparent)] px-3 py-2 transition hover:border-line2 hover:bg-[color-mix(in_srgb,var(--tint)_9%,transparent)]"
+                        >
                         {m.image && (
                           <span className="h-7 w-7 flex-none overflow-hidden rounded-md bg-[var(--plateA)] p-0.5">
                             <img src={m.image} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
                           </span>
                         )}
                         <code className="flex-none font-mono text-[0.74rem] text-accent">{m.code}</code>
+                        {m.newArrival && (
+                          <span className="flex-none rounded-full bg-[color-mix(in_srgb,var(--pri)_14%,transparent)] px-1.5 py-px font-mono text-[0.5rem] uppercase tracking-[0.12em] text-accent">New</span>
+                        )}
                         <span className="ml-auto truncate text-right text-[0.74rem] text-muted2">{m.spec}</span>
+                        <ChevronRight size={13} className="flex-none text-muted2 transition group-hover/row:translate-x-0.5 group-hover/row:text-accent" aria-hidden="true" />
+                        </Link>
                       </li>
                     ))}
                   </ul>

@@ -12,7 +12,16 @@ export const normCategory = (c) => ({
   count: (c.groups || []).reduce((n, g) => n + (g.models?.length || 0), 0),
   groups: (c.groups || []).map((g) => ({
     title: g.title,
-    models: (g.models || []).map((m) => ({ code: m.code, spec: m.spec, ...(m.image ? { image: assetUrl(m.image) } : {}) })),
+    models: (g.models || []).map((m) => ({
+      code: m.code,
+      spec: m.spec,
+      name: m.name || '',
+      summary: m.summary || '',
+      specs: m.specs || [],
+      features: m.features || [],
+      newArrival: !!m.newArrival,
+      ...(m.image ? { image: assetUrl(m.image) } : {}),
+    })),
   })),
 });
 

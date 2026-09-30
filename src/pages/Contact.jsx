@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { Container, Section } from '../components/Layout';
 import { SectionHeader } from '../components/SectionHeader';
@@ -20,6 +21,12 @@ export default function Contact() {
   const mapQuery = encodeURIComponent((site.address || []).join(', '));
   const mapSrc = `https://www.google.com/maps?q=${mapQuery}&hl=en&z=15&output=embed`;
   const categories = useContentStore((s) => s.categories);
+  // /contact?product=AVSD 55L — Walk-behind scrubber drier (from a model page)
+  const [params] = useSearchParams();
+  const product = params.get('product') || '';
+  const productRange = product
+    ? categories.find((c) => c.groups.some((g) => g.models.some((m) => product.startsWith(`${m.code} `) || product === m.code)))?.name
+    : undefined;
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(null);
 
@@ -68,7 +75,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label htmlFor="interest" className={labelCls}>Interested in</label>
-                    <select id="interest" name="interest" className={field} defaultValue="Not sure yet">
+                    <select id="interest" name="interest" className={field} key={productRange || 'none'} defaultValue={productRange || 'Not sure yet'}>
                       <option>Not sure yet</option>
                       {categories.map((c) => <option key={c.id}>{c.name}</option>)}
                     </select>
@@ -79,6 +86,8 @@ export default function Contact() {
                       id="message"
                       name="message"
                       rows={4}
+                      key={product}
+                      defaultValue={product ? `Quote request: ${product}\n\n` : undefined}
                       placeholder="Approx. area, floor type, current method, shift window"
                       className={`${field} h-auto min-h-28 resize-y py-3.5`}
                     />

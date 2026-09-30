@@ -5,6 +5,7 @@ import Home from './pages/Home';
 
 // Home ships in the main chunk; the rest split out.
 const Products = lazy(() => import('./pages/Products'));
+const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 const Industries = lazy(() => import('./pages/Industries'));
 const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/products', element: page(Products) },
+      { path: '/products/:range/:model', element: page(ProductDetail) },
       { path: '/industries', element: page(Industries) },
       { path: '/about', element: page(About) },
       { path: '/blog', element: page(Blog) },

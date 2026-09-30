@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# local environment — real values go in Vercel project settings
+.env
+.env.*
+!.env.example
