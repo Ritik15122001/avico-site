@@ -3,9 +3,8 @@
  * Each entry is merged into its range/group in categories.js, and also pushed
  * to a live database by `npm run import:avico` in /server.
  *
- * `image` is empty until photos are supplied — upload them in the admin
- * (Catalogue → edit range → model → details) or drop files in
- * public/images/products and set the path here.
+ * Photos live in public/images/products/avico/<code>.webp and are produced by
+ * scripts/process-avico.mjs from the originals in assets-src/avico-products.
  */
 export const avicoModels = [
   {
@@ -67,7 +66,7 @@ export const avicoModels = [
         "value": "host, handle, water tank, needle holder, floor brush, carpet brush, driving plate"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avf-004.webp",
     "newArrival": true
   },
   {
@@ -121,7 +120,7 @@ export const avicoModels = [
         "value": "Equipped with main unit, handle, water tank, needle holder, floor brush and carpet brush"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avf-005.webp",
     "newArrival": true
   },
   {
@@ -187,7 +186,7 @@ export const avicoModels = [
         "value": "17 inches"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avf-17h.webp",
     "newArrival": true
   },
   {
@@ -253,7 +252,7 @@ export const avicoModels = [
         "value": "18 inches"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avf-18h.webp",
     "newArrival": true
   },
   {
@@ -261,11 +260,25 @@ export const avicoModels = [
     "name": "Foam generator",
     "range": "floor-care",
     "group": "Scrubbers, polishers & burnishers",
-    "spec": "Foam generator",
-    "summary": "Foam generator for applying cleaning foam evenly across floors, walls and fixtures before agitation and rinse.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "Foam generator · Battery",
+    "summary": "A battery-powered foam generator that lays an even blanket of cleaning foam on floors, walls and fixtures before agitation and rinse — ideal for washrooms, kitchens and food plants.",
+    "features": [
+      "Cordless battery operation — no cable across wet floors",
+      "Even foam application for better chemical dwell time",
+      "Automatic foaming for consistent results",
+      "Compact upright body that is easy to move between areas"
+    ],
+    "specs": [
+      {
+        "label": "Power supply",
+        "value": "Battery"
+      },
+      {
+        "label": "Operation",
+        "value": "Automatic"
+      }
+    ],
+    "image": "/images/products/avico/avfg.webp",
     "newArrival": true
   },
   {
@@ -359,7 +372,7 @@ export const avicoModels = [
         "value": "1260*830*1250mm"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avrs-80l.webp",
     "newArrival": true
   },
   {
@@ -367,11 +380,81 @@ export const avicoModels = [
     "name": "Ride-on scrubber drier 140 L",
     "range": "floor-care",
     "group": "Ride-on scrubber driers",
-    "spec": "Ride-on · 140 L",
-    "summary": "A large-capacity ride-on scrubber drier with a 140 L tank for warehouse-scale floors. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "Ride-on · 36V · 820 mm",
+    "summary": "A heavy-duty 36V ride-on scrubber drier with an 820 mm cleaning path and large tanks for warehouse-scale floors.",
+    "features": [
+      "Up to 2,870 m²/h with an 820 mm cleaning width",
+      "125 L solution and 132 L recovery tanks",
+      "6 × 6V 310Ah battery pack for long shifts",
+      "2420W drive, brush and vacuum system with work lights"
+    ],
+    "specs": [
+      {
+        "label": "Voltage",
+        "value": "36V DC"
+      },
+      {
+        "label": "Power",
+        "value": "2420W"
+      },
+      {
+        "label": "Cleaning width",
+        "value": "820mm"
+      },
+      {
+        "label": "Squeegee width",
+        "value": "1100mm"
+      },
+      {
+        "label": "Productivity",
+        "value": "1230–2870m²/h"
+      },
+      {
+        "label": "Speed",
+        "value": "1.5–5.5 km/h"
+      },
+      {
+        "label": "Driving motor",
+        "value": "36V / 700W"
+      },
+      {
+        "label": "Brush motor",
+        "value": "36V / 900W"
+      },
+      {
+        "label": "Brush speed",
+        "value": "170rpm"
+      },
+      {
+        "label": "Vacuum motor",
+        "value": "36V / 600W"
+      },
+      {
+        "label": "Vacuum degree",
+        "value": "160mbar"
+      },
+      {
+        "label": "Solution tank",
+        "value": "125L"
+      },
+      {
+        "label": "Recovery tank",
+        "value": "132L"
+      },
+      {
+        "label": "Battery",
+        "value": "6 × 6V 310Ah"
+      },
+      {
+        "label": "Weight",
+        "value": "635kg"
+      },
+      {
+        "label": "Size",
+        "value": "1680 × 1020 × 1450mm"
+      }
+    ],
+    "image": "/images/products/avico/avrs-140l.webp",
     "newArrival": true
   },
   {
@@ -461,7 +544,7 @@ export const avicoModels = [
         "value": "1270 X 670 x 1130mm"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avsd-55l.webp",
     "newArrival": true
   },
   {
@@ -547,7 +630,7 @@ export const avicoModels = [
         "value": "Blue-BLACK"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avsd-50l.webp",
     "newArrival": true
   },
   {
@@ -629,7 +712,7 @@ export const avicoModels = [
         "value": "Blue, Grey, Yellow，Blue and Black"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avsd-32l.webp",
     "newArrival": true
   },
   {
@@ -641,7 +724,7 @@ export const avicoModels = [
     "summary": "A hand-push sweeper with a 70–92 cm sweeping path and a 40 L dust bin — no power, no charging, no training needed.",
     "features": [
       "Hand-push operation — no fuel, battery or cable",
-      "70–92 cm cleaning width",
+      "70–92 cm cleaning width with double rotating brushes",
       "40 L dust tank",
       "Light 21 kg build, easy to move between sites"
     ],
@@ -671,7 +754,7 @@ export const avicoModels = [
         "value": "90.5*80*39.5cm"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avms-40l.webp",
     "newArrival": true
   },
   {
@@ -679,11 +762,53 @@ export const avicoModels = [
     "name": "Battery powered sweeper",
     "range": "sweep-care",
     "group": "Manual & compact",
-    "spec": "Battery · Walk-behind",
-    "summary": "A battery powered walk-behind sweeper for dust and debris on hard floors indoors and out. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "Battery · Walk-behind · 1000 mm",
+    "summary": "A battery powered walk-behind sweeper with twin side brushes — sweeps 1,000 mm per pass and up to 4,000 m²/h of dust and debris indoors and out.",
+    "features": [
+      "4,000 m²/h with a 1,000 mm sweeping width",
+      "Main roller brush plus side brushes for edges",
+      "About 5 hours per charge on a 12V 100Ah battery",
+      "22 L debris bin"
+    ],
+    "specs": [
+      {
+        "label": "Battery",
+        "value": "12V 100Ah"
+      },
+      {
+        "label": "Running time",
+        "value": "5 Hrs"
+      },
+      {
+        "label": "Power",
+        "value": "270W"
+      },
+      {
+        "label": "Main brush length",
+        "value": "400mm"
+      },
+      {
+        "label": "Side brush diameter",
+        "value": "400mm"
+      },
+      {
+        "label": "Cleaning width",
+        "value": "1000mm"
+      },
+      {
+        "label": "Productivity",
+        "value": "4000m²/h"
+      },
+      {
+        "label": "Debris bin",
+        "value": "22L"
+      },
+      {
+        "label": "Optional water tank",
+        "value": "12L"
+      }
+    ],
+    "image": "/images/products/avico/avs-690.webp",
     "newArrival": true
   },
   {
@@ -691,11 +816,33 @@ export const avicoModels = [
     "name": "Ride-on sweeper",
     "range": "sweep-care",
     "group": "Battery ride-on sweepers",
-    "spec": "Ride-on",
-    "summary": "A ride-on sweeper for large indoor and outdoor areas. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "Ride-on · Battery",
+    "summary": "A battery electric ride-on sweeper with a drum main brush for large indoor and outdoor areas — warehouses, car parks, campuses and airports.",
+    "features": [
+      "Battery electric — quiet and emission-free",
+      "Ride-on operation covers large areas quickly",
+      "Drum-type main brush with lifting V-brush system",
+      "Compact 1470 mm body for aisles and ramps"
+    ],
+    "specs": [
+      {
+        "label": "Power supply",
+        "value": "Battery (DC)"
+      },
+      {
+        "label": "Operation",
+        "value": "Ride-on"
+      },
+      {
+        "label": "Brush system",
+        "value": "Lifting V-brush, drum type"
+      },
+      {
+        "label": "Size",
+        "value": "1470 × 960 × 1230mm"
+      }
+    ],
+    "image": "/images/products/avico/avrsw.webp",
     "newArrival": true
   },
   {
@@ -769,7 +916,7 @@ export const avicoModels = [
         "value": "32kg/33.5kg"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avvc-80l-3.webp",
     "newArrival": true
   },
   {
@@ -843,7 +990,7 @@ export const avicoModels = [
         "value": "27kg/29kg"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avvc-60l-2.webp",
     "newArrival": true
   },
   {
@@ -917,7 +1064,7 @@ export const avicoModels = [
         "value": "15.5kg"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avvc-30l.webp",
     "newArrival": true
   },
   {
@@ -991,7 +1138,7 @@ export const avicoModels = [
         "value": "15kg/14.5kg"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avvc-15l.webp",
     "newArrival": true
   },
   {
@@ -1041,7 +1188,7 @@ export const avicoModels = [
         "value": "57.7×35.7×30cm"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avbp.webp",
     "newArrival": true
   },
   {
@@ -1049,11 +1196,69 @@ export const avicoModels = [
     "name": "Steam cleaner",
     "range": "clean-care",
     "group": "Steam cleaning",
-    "spec": "Steam cleaner",
-    "summary": "A steam cleaner for chemical-free cleaning and sanitising of kitchens, washrooms and upholstery. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "3-in-1 · Spray, scrub, extract",
+    "summary": "A three-in-one steam carpet cleaning machine that sprays hot solution deep into the pile, scrubs with a 600 rpm roller brush and extracts the dirty water in a single walk-behind pass.",
+    "features": [
+      "High-pressure spray reaches the base of the carpet to dissolve stubborn stains",
+      "600 rpm roller brush lifts and opens matted fibres",
+      "1000W extraction leaves carpets fast-drying",
+      "Up to 1,800 m² per run with a 12 m cable"
+    ],
+    "specs": [
+      {
+        "label": "Voltage",
+        "value": "220V-240V / 50Hz"
+      },
+      {
+        "label": "Roller brush motor",
+        "value": "24V DC / 180W"
+      },
+      {
+        "label": "Spray motor",
+        "value": "24V DC / 36W"
+      },
+      {
+        "label": "Vacuum motor",
+        "value": "1000W"
+      },
+      {
+        "label": "Roller brush diameter",
+        "value": "90mm"
+      },
+      {
+        "label": "Clean water tank",
+        "value": "30.2L"
+      },
+      {
+        "label": "Recovery tank",
+        "value": "28.3L"
+      },
+      {
+        "label": "Air flow rate",
+        "value": "2880L/min"
+      },
+      {
+        "label": "Coverage",
+        "value": "1800m²"
+      },
+      {
+        "label": "Cable",
+        "value": "12m"
+      },
+      {
+        "label": "Net weight",
+        "value": "46kg"
+      },
+      {
+        "label": "Gross weight",
+        "value": "65kg"
+      },
+      {
+        "label": "Packing",
+        "value": "1250 × 500 × 950mm"
+      }
+    ],
+    "image": "/images/products/avico/avsc.webp",
     "newArrival": true
   },
   {
@@ -1062,10 +1267,40 @@ export const avicoModels = [
     "range": "clean-care",
     "group": "High-pressure washers",
     "spec": "Cold water · 4HP",
-    "summary": "A 4HP high-pressure washer for vehicles, yards, facades and heavy equipment. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "summary": "A 4HP mobile cold-water high-pressure washer for vehicles, yards, facades and heavy equipment.",
+    "features": [
+      "Higher-output 4HP pump for tough outdoor dirt",
+      "Motor-driven cold-water system",
+      "Mobile frame with large wheels",
+      "Round water-column nozzle for focused cleaning"
+    ],
+    "specs": [
+      {
+        "label": "Type",
+        "value": "Cold water high-pressure cleaner"
+      },
+      {
+        "label": "Power",
+        "value": "4HP"
+      },
+      {
+        "label": "Drive",
+        "value": "Motor"
+      },
+      {
+        "label": "Operation",
+        "value": "Mobile"
+      },
+      {
+        "label": "Nozzle",
+        "value": "Round water column"
+      },
+      {
+        "label": "Dimensions",
+        "value": "760 × 550 × 540 mm"
+      }
+    ],
+    "image": "/images/products/avico/avpw-4hp.webp",
     "newArrival": true
   },
   {
@@ -1107,7 +1342,7 @@ export const avicoModels = [
         "value": "760 × 550 × 540 mm"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avpw-3hp.webp",
     "newArrival": true
   },
   {
@@ -1115,11 +1350,57 @@ export const avicoModels = [
     "name": "Escalator cleaner",
     "range": "clean-care",
     "group": "Escalator cleaners",
-    "spec": "Escalator",
-    "summary": "A dedicated escalator and travelator cleaner for malls, metro stations and airports. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "Escalator · 450 mm · 1180W",
+    "summary": "A dedicated escalator and travelator cleaner with a 450 mm working width — scrubs and vacuums the grooves of steps and pallets in one pass for malls, metro stations and airports.",
+    "features": [
+      "450 mm operating width matched to escalator steps",
+      "1000W vacuum motor lifts dirt out of the grooves",
+      "Rolling brush driven by a 24V 180W motor",
+      "20 L tank and 12 m cable for continuous work"
+    ],
+    "specs": [
+      {
+        "label": "Voltage",
+        "value": "220V-240V / 50Hz"
+      },
+      {
+        "label": "Power",
+        "value": "1180W"
+      },
+      {
+        "label": "Operating width",
+        "value": "450mm"
+      },
+      {
+        "label": "Vacuum motor",
+        "value": "220VAC / 1000W"
+      },
+      {
+        "label": "Roll brush motor",
+        "value": "24V / 180W"
+      },
+      {
+        "label": "Tank capacity",
+        "value": "20L"
+      },
+      {
+        "label": "Cable",
+        "value": "12m"
+      },
+      {
+        "label": "Gross weight",
+        "value": "40.2kg"
+      },
+      {
+        "label": "Packing",
+        "value": "950 × 540 × 310mm"
+      },
+      {
+        "label": "Insulation",
+        "value": "Grade I"
+      }
+    ],
+    "image": "/images/products/avico/avec-450.webp",
     "newArrival": true
   },
   {
@@ -1161,7 +1442,7 @@ export const avicoModels = [
         "value": "12 months"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avac.webp",
     "newArrival": true
   },
   {
@@ -1259,7 +1540,7 @@ export const avicoModels = [
         "value": "Black"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avcc-40l.webp",
     "newArrival": true
   },
   {
@@ -1357,7 +1638,7 @@ export const avicoModels = [
         "value": "Black"
       }
     ],
-    "image": "",
+    "image": "/images/products/avico/avcc-20l.webp",
     "newArrival": true
   },
   {
@@ -1365,11 +1646,53 @@ export const avicoModels = [
     "name": "Carpet and sofa cleaner",
     "range": "carpet-care",
     "group": "Extraction & drying",
-    "spec": "Carpet & upholstery",
-    "summary": "A carpet and sofa extraction cleaner for fabric seating, upholstery and carpets. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "Carpet & sofa · 60 L · 2087W",
+    "summary": "A carpet and sofa extraction cleaner with a powered scrubbing brush — deep cleans upholstery, carpets and fabric seating for hotels, offices and cinemas.",
+    "features": [
+      "Spray, scrub and extract in one pass",
+      "2000W vacuum motor with 250 mbar suction",
+      "20 L clean-water and 60 L recovery tanks",
+      "Powered 12V brush head for upholstery and stairs"
+    ],
+    "specs": [
+      {
+        "label": "Function",
+        "value": "Carpet & sofa cleaner"
+      },
+      {
+        "label": "Total power",
+        "value": "2087W"
+      },
+      {
+        "label": "Working power",
+        "value": "220V / 50Hz"
+      },
+      {
+        "label": "Vacuum motor",
+        "value": "2000W"
+      },
+      {
+        "label": "Vacuum suction",
+        "value": "250mbar"
+      },
+      {
+        "label": "Pump power",
+        "value": "34W"
+      },
+      {
+        "label": "Brush motor",
+        "value": "12V / 45W"
+      },
+      {
+        "label": "Clean water tank",
+        "value": "20L"
+      },
+      {
+        "label": "Recovery tank",
+        "value": "60L"
+      }
+    ],
+    "image": "/images/products/avico/avcs-730sf.webp",
     "newArrival": true
   },
   {
@@ -1377,11 +1700,45 @@ export const avicoModels = [
     "name": "Carpet blower",
     "range": "carpet-care",
     "group": "Extraction & drying",
-    "spec": "Air mover · Drying",
-    "summary": "A carpet blower / air mover that dries carpets and floors quickly after extraction or wet cleaning so areas return to use sooner. Full specifications on request.",
-    "features": [],
-    "specs": [],
-    "image": "",
+    "spec": "Air mover · 900W · 3-speed",
+    "summary": "A 3-speed carpet blower / air mover that dries carpets and floors quickly after extraction or wet cleaning, so areas return to use sooner.",
+    "features": [
+      "Three speeds — up to 160 m³/min airflow",
+      "900W motor on standard 220–240V supply",
+      "Compact stackable body with carry handle",
+      "7 m cable"
+    ],
+    "specs": [
+      {
+        "label": "Power",
+        "value": "900W"
+      },
+      {
+        "label": "Voltage",
+        "value": "220V-240V"
+      },
+      {
+        "label": "Speeds",
+        "value": "High / medium / low"
+      },
+      {
+        "label": "Air flow rate",
+        "value": "160 / 130 / 110 m³/min"
+      },
+      {
+        "label": "Cable",
+        "value": "7m"
+      },
+      {
+        "label": "Gross weight",
+        "value": "17.5kg"
+      },
+      {
+        "label": "Size",
+        "value": "500 × 410 × 530mm"
+      }
+    ],
+    "image": "/images/products/avico/avcb.webp",
     "newArrival": true
   }
 ];

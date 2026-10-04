@@ -27,3 +27,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# contact sheets from scripts/process-avico.mjs review
+assets-src/_contact*
